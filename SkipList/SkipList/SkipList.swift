@@ -19,10 +19,16 @@ struct SkipList<Key: Comparable, Value: Any> {
         init(levels: Int) { links = (0..<levels).map { _ in return nil } }
     }
     
-    private struct Node: Comparable {
+    private class Node: Comparable {
         let key: Key?
         var value: Value?
         var forward: Links
+        
+        init(key: Key?, value: Value?, forward: Links) {
+            self.key = key
+            self.value = value
+            self.forward = forward
+        }
         
         func forward(_ level: Int) -> Node? { return forward[level] }
         
@@ -78,7 +84,7 @@ extension SkipList {
         return min(level, maxLevels)
     }
     
-    func insert(key: Key, value: Value) {
+    mutating func insert(key: Key, value: Value) {
         var (_, actual, backward) = search(key: key)
         
         guard actual == nil else {
@@ -87,11 +93,11 @@ extension SkipList {
         }
         
         let forward = Links(levels: maxLevels)
-        var newNode = Node(key: key, value: value, forward: forward)
+        let newNode = Node(key: key, value: value, forward: forward)
         
         for i in 0..<randomLevel() {
             var incoming = backward[i] ?? header
-            newNode.forward[i] = incoming
+            newNode.forward[i] = incoming.forward[i]
             incoming.forward[i] = newNode
         }
     }
@@ -108,7 +114,7 @@ extension SkipList {
             let (_, actual) = search(key: key)
             return actual?.value
         }
-        set(newValue) {
+        mutating set(newValue) {
             guard let newValue = newValue else {
                 delete(key: key)
                 return
