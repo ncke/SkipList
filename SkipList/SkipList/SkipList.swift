@@ -14,7 +14,7 @@ struct SkipList<Key: Comparable, Value: Any> {
         var links: [Node?]
         subscript(_ index: Int) -> Node? {
             get { return links[index] }
-            set(newValue) { links[index] = newValue }
+            mutating set(newValue) { links[index] = newValue }
         }
         init(levels: Int) { links = (0..<levels).map { _ in return nil } }
     }
@@ -86,12 +86,12 @@ extension SkipList {
             return
         }
         
-        var forward = Links(levels: maxLevels)
-        let newNode = Node(key: key, value: value, forward: forward)
+        let forward = Links(levels: maxLevels)
+        var newNode = Node(key: key, value: value, forward: forward)
         
         for i in 0..<randomLevel() {
             var incoming = backward[i] ?? header
-            forward[i] = incoming
+            newNode.forward[i] = incoming
             incoming.forward[i] = newNode
         }
     }

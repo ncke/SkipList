@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		01D7044B22139A2500A1B5B6 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7044A22139A2500A1B5B6 /* main.swift */; };
 		01D7045222139AD400A1B5B6 /* SkipList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7045122139AD400A1B5B6 /* SkipList.swift */; };
+		01D7045A221580D600A1B5B6 /* SkipListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D70459221580D600A1B5B6 /* SkipListTests.swift */; };
+		01D7045F2215818500A1B5B6 /* SkipList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7045122139AD400A1B5B6 /* SkipList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,10 +29,20 @@
 		01D7044722139A2500A1B5B6 /* SkipList */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SkipList; sourceTree = BUILT_PRODUCTS_DIR; };
 		01D7044A22139A2500A1B5B6 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		01D7045122139AD400A1B5B6 /* SkipList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipList.swift; sourceTree = "<group>"; };
+		01D70457221580D500A1B5B6 /* SkipListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkipListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		01D70459221580D600A1B5B6 /* SkipListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipListTests.swift; sourceTree = "<group>"; };
+		01D7045B221580D600A1B5B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		01D7044422139A2500A1B5B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01D70454221580D500A1B5B6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -44,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				01D7044922139A2500A1B5B6 /* SkipList */,
+				01D70458221580D600A1B5B6 /* SkipListTests */,
 				01D7044822139A2500A1B5B6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				01D7044722139A2500A1B5B6 /* SkipList */,
+				01D70457221580D500A1B5B6 /* SkipListTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -63,6 +77,15 @@
 				01D7045122139AD400A1B5B6 /* SkipList.swift */,
 			);
 			path = SkipList;
+			sourceTree = "<group>";
+		};
+		01D70458221580D600A1B5B6 /* SkipListTests */ = {
+			isa = PBXGroup;
+			children = (
+				01D70459221580D600A1B5B6 /* SkipListTests.swift */,
+				01D7045B221580D600A1B5B6 /* Info.plist */,
+			);
+			path = SkipListTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,6 +108,23 @@
 			productReference = 01D7044722139A2500A1B5B6 /* SkipList */;
 			productType = "com.apple.product-type.tool";
 		};
+		01D70456221580D500A1B5B6 /* SkipListTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01D7045C221580D600A1B5B6 /* Build configuration list for PBXNativeTarget "SkipListTests" */;
+			buildPhases = (
+				01D70453221580D500A1B5B6 /* Sources */,
+				01D70454221580D500A1B5B6 /* Frameworks */,
+				01D70455221580D500A1B5B6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SkipListTests;
+			productName = SkipListTests;
+			productReference = 01D70457221580D500A1B5B6 /* SkipListTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -96,6 +136,9 @@
 				ORGANIZATIONNAME = Nick;
 				TargetAttributes = {
 					01D7044622139A2500A1B5B6 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					01D70456221580D500A1B5B6 = {
 						CreatedOnToolsVersion = 10.1;
 					};
 				};
@@ -113,9 +156,20 @@
 			projectRoot = "";
 			targets = (
 				01D7044622139A2500A1B5B6 /* SkipList */,
+				01D70456221580D500A1B5B6 /* SkipListTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		01D70455221580D500A1B5B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		01D7044322139A2500A1B5B6 /* Sources */ = {
@@ -124,6 +178,15 @@
 			files = (
 				01D7045222139AD400A1B5B6 /* SkipList.swift in Sources */,
 				01D7044B22139A2500A1B5B6 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01D70453221580D500A1B5B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01D7045F2215818500A1B5B6 /* SkipList.swift in Sources */,
+				01D7045A221580D600A1B5B6 /* SkipListTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +328,42 @@
 			};
 			name = Release;
 		};
+		01D7045D221580D600A1B5B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = Q4EVHB7WX9;
+				INFOPLIST_FILE = SkipListTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nickeveritt.SkipListTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		01D7045E221580D600A1B5B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = Q4EVHB7WX9;
+				INFOPLIST_FILE = SkipListTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nickeveritt.SkipListTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -282,6 +381,15 @@
 			buildConfigurations = (
 				01D7044F22139A2500A1B5B6 /* Debug */,
 				01D7045022139A2500A1B5B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		01D7045C221580D600A1B5B6 /* Build configuration list for PBXNativeTarget "SkipListTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01D7045D221580D600A1B5B6 /* Debug */,
+				01D7045E221580D600A1B5B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
