@@ -2,8 +2,8 @@
 //  SkipList.swift
 //  SkipList
 //
-//  Created by Nick on 12/02/2019.
-//  Copyright © 2019 Nick. All rights reserved.
+//  Created by Nick Everitt on 12/02/2019.
+//  Copyright © 2019 Nick Everitt. All rights reserved.
 //
 
 import Foundation
