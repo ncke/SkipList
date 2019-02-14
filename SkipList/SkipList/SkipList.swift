@@ -45,19 +45,19 @@ struct SkipList<Key: Comparable, Value: Any> {
 extension SkipList {
     
     private func search(key: Key) -> (Node, Node?) {
-        guard var current = list.first else { fatalError() }
+        guard var x = list.first else { fatalError() }
         
         for level in (0..<maxLevels).reversed() {
-            
-            while let x < x.forward(level) {
-                x = x.forward(level)!
-                
-            }
+            while let next = x.forward(level), x < next { x = next }
         }
         
-        let y = current.forward(0)
-        
-        return y?.key == key ? (x, y) : (x, nil)
+        let next = x.forward(0)
+        return next?.key == key ? (x, next) : (x, nil)
+    }
+    
+    subscript(_ key: Key) -> Value? {
+        let (_, actual) = search(key: key)
+        return actual?.value
     }
     
 }
