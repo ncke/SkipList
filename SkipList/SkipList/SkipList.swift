@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SkipList<Key: Comparable, Value: Any> {
+class SkipList<Key: Comparable, Value: Any> {
     
     private struct Links {
         var links: [Node?]
@@ -19,7 +19,7 @@ struct SkipList<Key: Comparable, Value: Any> {
         init(levels: Int) { links = (0..<levels).map { _ in return nil } }
     }
     
-    private class Node: Comparable {
+    private class Node {
         let key: Key?
         var value: Value?
         var forward: Links
@@ -31,16 +31,6 @@ struct SkipList<Key: Comparable, Value: Any> {
         }
         
         func forward(_ level: Int) -> Node? { return forward[level] }
-        
-        static func < (lhs: SkipList<Key, Value>.Node, rhs: SkipList<Key, Value>.Node) -> Bool {
-            guard let left = lhs.key else { return true }
-            guard let right = rhs.key else { return false }
-            return left < right
-        }
-        
-        static func == (lhs: SkipList<Key, Value>.Node, rhs: SkipList<Key, Value>.Node) -> Bool {
-            return lhs.key == rhs.key
-        }
     }
     
     private var header: Node
@@ -54,28 +44,17 @@ struct SkipList<Key: Comparable, Value: Any> {
 
 extension SkipList {
     
-    private func search(key: Key) -> (Node, Node?) {
-        var x = header
-        
-        for level in (0..<maxLevels).reversed() {
-            while let next = x.forward(level), x < next { x = next }
-        }
-        
-        let next = x.forward(0)
-        return next?.key == key ? (x, next) : (x, nil)
-    }
-    
-    private func search(key: Key) -> (Node, Node?, Links) {
+    private func search(key searchKey: Key) -> (Node, Node?, Links) {
         var x = header
         var backward = Links(levels: maxLevels)
         
         for level in (0..<maxLevels).reversed() {
-            while let next = x.forward(level), x < next { x = next }
+            while let next = x.forward(level), let nextKey = next.key, nextKey < searchKey { x = next }
             backward[level] = x
         }
         
         let next = x.forward(0)
-        return next?.key == key ? (x, next, backward) : (x, nil, backward)
+        return next?.key == searchKey ? (x, next, backward) : (x, nil, backward)
     }
     
     private func randomLevel() -> Int {
@@ -84,7 +63,7 @@ extension SkipList {
         return min(level, maxLevels)
     }
     
-    mutating func insert(key: Key, value: Value) {
+    func insert(key: Key, value: Value) {
         var (_, actual, backward) = search(key: key)
         
         guard actual == nil else {
@@ -96,7 +75,7 @@ extension SkipList {
         let newNode = Node(key: key, value: value, forward: forward)
         
         for i in 0..<randomLevel() {
-            var incoming = backward[i] ?? header
+            let incoming = backward[i] ?? header
             newNode.forward[i] = incoming.forward[i]
             incoming.forward[i] = newNode
         }
@@ -111,10 +90,10 @@ extension SkipList {
     
     subscript(_ key: Key) -> Value? {
         get {
-            let (_, actual) = search(key: key)
+            let (_, actual, _) = search(key: key)
             return actual?.value
         }
-        mutating set(newValue) {
+        set(newValue) {
             guard let newValue = newValue else {
                 delete(key: key)
                 return
