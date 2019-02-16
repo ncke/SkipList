@@ -34,10 +34,12 @@ class SkipList<Key: Comparable, Value: Any> {
     }
     
     private var header: Node
-    private var maxLevels = 5
-    private var p = 0.33
+    private var maxLevels: Int
+    private var p: Double
     
-    init() {
+    init(maxLevels: Int = 5, p: Double = 0.33) {
+        self.maxLevels = maxLevels
+        self.p = p
         header = Node(key: nil, value: nil, forward: Links(levels: maxLevels))
     }
 }
