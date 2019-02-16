@@ -82,7 +82,16 @@ extension SkipList {
     }
 
     func delete(key: Key) {
+        var (_, actual, backward) = search(key: key)
         
+        guard let deleteNode = actual else {
+            return
+        }
+        
+        for i in 0..<maxLevels {
+            let incoming = backward[i] ?? header
+            incoming.forward[i] = deleteNode.forward[i]
+        }
     }
 }
 
