@@ -11,18 +11,18 @@ import XCTest
 class SkipListTests: XCTestCase {
     
     func testSearchEmpty() {
-        var s = SkipList<Int, Int>()
+        let s = SkipList<Int, Int>()
         XCTAssert(s[1000] == nil)
     }
     
     func testOneItem() {
-        var s = SkipList<Int, Int>()
+        let s = SkipList<Int, Int>()
         s[1000] = 1
         XCTAssert(s[1000] == 1)
     }
     
     func testTwoItems() {
-        var s = SkipList<Int, Int>()
+        let s = SkipList<Int, Int>()
         s[1000] = 23; s[2000] = 12
         
         XCTAssert(s[1000] == 23)
@@ -30,7 +30,7 @@ class SkipListTests: XCTestCase {
     }
     
     func testTwoItemsReverseInsert() {
-        var s = SkipList<Int, Int>()
+        let s = SkipList<Int, Int>()
         s[2000] = 19; s[1000] = 74
         
         XCTAssert(s[1000] == 74)
@@ -38,14 +38,14 @@ class SkipListTests: XCTestCase {
     }
     
     func testOneItemOverwrite() {
-        var s = SkipList<Int, Int>()
+        let s = SkipList<Int, Int>()
         s[1000] = 45; s[1000] = 67
         
         XCTAssert(s[1000] == 67)
     }
     
     func testOneItemDelete() {
-        var s = SkipList<Int, Int>()
+        let s = SkipList<Int, Int>()
         s[1000] = 20
         XCTAssert(s[1000] == 20)
         s[1000] = nil
@@ -53,7 +53,7 @@ class SkipListTests: XCTestCase {
     }
     
     func testFirstItemDelete() {
-        var s = SkipList<Int, Int>()
+        let s = SkipList<Int, Int>()
         s[1000] = 87; s[2000] = 90; s[3000] = 15; s[4000] = 25; s[5000] = 98
         XCTAssert(s[1000] == 87)
         s[1000] = nil
@@ -62,7 +62,7 @@ class SkipListTests: XCTestCase {
     }
     
     func testMiddleItemDelete() {
-        var s = SkipList<Int, Int>()
+        let s = SkipList<Int, Int>()
         s[1000] = 87; s[2000] = 90; s[3000] = 15; s[4000] = 25; s[5000] = 98
         XCTAssert(s[3000] == 15)
         s[3000] = nil
@@ -72,7 +72,7 @@ class SkipListTests: XCTestCase {
     }
     
     func testLastItemDelete() {
-        var s = SkipList<Int, Int>()
+        let s = SkipList<Int, Int>()
         s[1000] = 87; s[2000] = 90; s[3000] = 15; s[4000] = 25; s[5000] = 98
         XCTAssert(s[5000] == 98)
         s[5000] = nil
@@ -81,7 +81,7 @@ class SkipListTests: XCTestCase {
     }
     
     func testSearchNonExistent() {
-        var s = SkipList<Int, Int>()
+        let s = SkipList<Int, Int>()
         s[1000] = 87; s[2000] = 90; s[3000] = 15; s[4000] = 25; s[5000] = 98
         XCTAssert(s[0] == nil)
         XCTAssert(s[2500] == nil)
@@ -89,7 +89,7 @@ class SkipListTests: XCTestCase {
     }
     
     func testRandomized() {
-        var s = SkipList<Int, Int>()
+        let s = SkipList<Int, Int>()
         let listSize = Int.random(in: 100...1000)
         
         var expected = [Int: Int]()
@@ -106,7 +106,7 @@ class SkipListTests: XCTestCase {
     }
 
     func testLarge() {
-        var s = SkipList<Int, Int>()
+        let s = SkipList<Int, Int>()
         let listSize = 10000
         
         var expected = [Int: Int]()
